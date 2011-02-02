@@ -29,30 +29,30 @@ socket.on('connection', function(client) {
       var username = parts[1];
 
       if (!username || username == '') {
-        client.send(json({announcement:"You must specify a username. Please reload the app."}));
+        client.send(JSON.stringify({announcement:"You must specify a username. Please reload the app."}));
         return;
       }
 
       var usernames = clients.map(clients.usernames);
       if (usernames.indexOf(username) >= 0) {
-        client.send(json({announcement:"Username in use"}));
+        client.send(JSON.stringify({announcement:"Username in use"}));
         return;
       }
 
       client.username = username;
 
-      client.broadcast(json({announcement:client.username+' joined'}));
+      client.broadcast(JSON.stringify({announcement:client.username+' joined'}));
       console.log(client.sessionId + " = " + client.username);
-      client.send(json({messages:buffer}));
-      client.send(json({userlist:usernames}));
-      client.send(json({announcement:"Connected!"}));
+      client.send(JSON.stringify({messages:buffer}));
+      client.send(JSON.stringify({userlist:usernames}));
+      client.send(JSON.stringify({announcement:"Connected!"}));
 
       clients.push(client);
       return;
     } 
 
     if (!client.username) {
-      client.send(json({announcement:"You must specify a username. Please reload the app."}));
+      client.send(JSON.stringify({announcement:"You must specify a username. Please reload the app."}));
       return;
     }
 
@@ -61,12 +61,12 @@ socket.on('connection', function(client) {
     if (buffer.length > MAXBUF) {
       buffer.shift();
     }
-    client.broadcast(json(message));
+    client.broadcast(JSON.stringify(message));
   });
 
   client.on('disconnect', function() {
     if (client.username) {
-      client.broadcast(json({announcement:(client.username)+' left chat'}));
+      client.broadcast(JSON.stringify({announcement:(client.username)+' left chat'}));
     }
     var pos = clients.indexOf(client);
     if (pos >= 0) {
