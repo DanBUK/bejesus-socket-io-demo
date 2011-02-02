@@ -8,7 +8,8 @@ var server = http.createServer(function (req, res) {
     if (err) res.end(err.toString());
     else res.end(data);
   });
-}).listen(8051);
+});
+server.listen(8051);
 
 var socket = io.listen(server, {
   flashPolicyServer: false,
