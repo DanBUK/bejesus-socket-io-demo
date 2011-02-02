@@ -15,17 +15,6 @@ var socket = io.listen(server, {
   flashPolicyServer: false,
   transports: ['htmlfile', 'xhr-multipart', 'xhr-polling', 'jsonp-polling']
 });
-var clients = [];
-socket.on('connection', function (client) {
-  for(var i in clients) {
-    clients[i].send("Conn count: " + clients.length);
-  }
-  clients.push(client);
-});
-socket.on('disconnect', function (client) {
-
-});
-
 
 var clients = [];
 clients.usernames = function(client) {
