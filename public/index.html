@@ -6,7 +6,8 @@
     var sock = null;
     var ts = null;
     var body_loaded = function () {
-      sock = new io.Socket(null, {port: 80, transports: ['websocket', 'htmlfile', 'xhr-multipart', 'xhr-polling']});
+      // sock = new io.Socket(null, {port: 80, transports: ['websocket', 'htmlfile', 'xhr-multipart', 'xhr-polling']});
+      sock = new io.Socket(null, {port: 80, transports: ['websocket']});
       sock.on('message', handleMessage);
       sock.connect();
       ts = document.getElementById('timestamp');
