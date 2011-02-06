@@ -31,7 +31,7 @@ socket.on('connection', function(client) {
   });
 
   client.on('disconnect', function() {
-    clearTimer(my_timer);
+    clearTimeout(my_timer);
     console.log('disconnect');
   });
 });
