@@ -20,7 +20,7 @@ var socket = io.listen(app, {
 });
 
 socket.on('connection', function(client) {
-  
+  console.log(client);
   var my_timer = setInterval(function () {
     console.log(client);
     client.send(JSON.stringify({ timestamp: (new Date()).getTime() }));
