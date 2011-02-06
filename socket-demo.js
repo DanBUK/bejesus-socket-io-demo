@@ -1,17 +1,22 @@
 var http = require('http');
 var fs = require('fs');
 var io = require('socket.io');
+var express = require('express');
 
-var server = http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  fs.readFile('index.html', function (err, data) {
-    if (err) res.end(err.toString());
-    else res.end(data);
-  });
+var app = express.createServer();
+
+app.configure(function(){
+  app.use(express.staticProvider(__dirname + '/public'));
 });
-server.listen(8051);
 
-var socket = io.listen(server, {
+// Routes
+// Homepage
+app.get('/', function(req, res, next){
+  res.render('./public/index.html');
+});
+app.listen(process.ENV['app_port'], process.ENV['app_host']);
+
+var socket = io.listen(app, {
   flashPolicyServer: false,
   transports: ['htmlfile', 'xhr-multipart', 'xhr-polling', 'jsonp-polling']
 });
