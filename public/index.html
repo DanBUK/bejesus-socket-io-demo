@@ -7,9 +7,10 @@
     var ts = null;
     var body_loaded = function () {
       sock = new io.Socket(null, {
-        port: 80,
-        // transports: ['websocket', 'flashsocket', 'htmlfile', 'xhr-multipart', 'xhr-polling', 'jsonp-polling']
-        transports: ['websocket']
+        port: 80
+        // ,
+        // ,transports: ['websocket', 'flashsocket', 'htmlfile', 'xhr-multipart', 'xhr-polling', 'jsonp-polling']
+        // ,transports: ['websocket']
       });
       sock.on('message', handleMessage);
       sock.connect();
