@@ -11,6 +11,7 @@
         // ,
         // ,transports: ['websocket', 'flashsocket', 'htmlfile', 'xhr-multipart', 'xhr-polling', 'jsonp-polling']
         // ,transports: ['websocket']
+        , rememberTransport: false
       });
       sock.on('message', handleMessage);
       sock.connect();
