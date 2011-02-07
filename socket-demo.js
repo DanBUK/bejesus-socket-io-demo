@@ -16,8 +16,9 @@ app.listen(process.ENV['app_port'], process.ENV['app_host']);
 
 var socket = io.listen(app, {
   flashPolicyServer: false,
-  transports: ['websocket', 'flashsocket', 'htmlfile', 'xhr-multipart', 'xhr-polling', 'jsonp-polling']
+  // transports: ['websocket', 'flashsocket', 'htmlfile', 'xhr-multipart', 'xhr-polling', 'jsonp-polling']
   // transports: ['websocket', 'flashsocket', 'htmlfile', 'xhr-multipart', 'jsonp-polling']
+  transports: ['websocket']
 });
 
 socket.on('connection', function(client) {
