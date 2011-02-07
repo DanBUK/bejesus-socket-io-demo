@@ -1,0 +1,23 @@
+<html>
+<head>
+<script type="text/javascript">
+  window.onload = function () {
+    if ("WebSocket" in window) {
+      var ws = new WebSocket("ws://" + window.location.host + "/service");
+      ws.onopen = function() {
+        // Web Socket is connected. You can send data by send() method.
+        ws.send("message to send");
+      };
+      ws.onmessage = function (evt) { var received_msg = evt.data;  };
+      ws.onclose = function() { // websocket is closed.
+      };
+    } else {
+      alert('no websock');
+    }
+  };
+</script>
+</head>
+<body>
+  Body
+</body>
+</html>
