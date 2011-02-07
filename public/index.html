@@ -6,13 +6,14 @@
     var sock = null;
     var ts = null;
     var body_loaded = function () {
-      sock = new io.Socket(null, {
-        port: 80
+      sock = new io.Socket();
+      // sock = new io.Socket(null, {
+      //  port: 80
         // ,
         // ,transports: ['websocket', 'flashsocket', 'htmlfile', 'xhr-multipart', 'xhr-polling', 'jsonp-polling']
-        , transports: ['websocket']
-        , rememberTransport: false
-      });
+      //  , transports: ['websocket']
+      //  , rememberTransport: false
+      // });
       sock.on('message', handleMessage);
       sock.connect();
       ts = document.getElementById('timestamp');
